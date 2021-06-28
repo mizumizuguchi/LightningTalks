@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,10 +19,21 @@ namespace LightningTalks
             this.args = args;
             InitializeComponent();
         }
+
+        [DllImport("user32.dll")]
+        private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+        [DllImport("user32.dll")]
+        private static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+
         const int CLOCK_RADIUS = 115;
         Bitmap bmpClockBase;
+        HotKey hotKey;
+        MouseHook mh = new MouseHook();
         private void Clock_Load(object sender, EventArgs e)
         {
+            mh.MouseHooked += mh_MouseHooked;
+            hotKey = new HotKey(MOD_KEY.ALT | MOD_KEY.CONTROL | MOD_KEY.SHIFT, Keys.F);
+            hotKey.HotKeyPush += new EventHandler(hotKey_HotKeyPush);
             this.DoubleBuffered = true;
             this.BackgroundImageLayout = ImageLayout.Center;
             Bitmap bmp = new Bitmap(this.Width, this.Height);
@@ -173,18 +185,43 @@ namespace LightningTalks
 
         private void Clock_MouseEnter(object sender, EventArgs e)
         {
-            if (args >= 6)
-            {
-                this.Opacity = 0.5;
-            }
+          
         }
 
         private void Clock_MouseLeave(object sender, EventArgs e)
         {
-            if (args >= 6)
+        }
+        void hotKey_HotKeyPush(object sender, EventArgs e)
+        {
+            //ウィンドウの拡張スタイルを再設定する(このソースの先頭でやっている拡張スタイルの設定と同じ)
+            //getWindowLongで現在の拡張スタイルに、0x20 (EX_TRANSPARENT)を排他的論理和(^)したものを設定するので、
+            //ショートカットキーを押すたびにOnOffが切り替わる
+            if (args >= 9)
             {
-                this.Opacity = 1;
+                SetWindowLong(this.Handle, -20, GetWindowLong(this.Handle, -20) ^ 0x20);
             }
         }
+        private void mh_MouseHooked(object sender, MouseHookedEventArgs e)
+        {
+            if (e.Message == MouseMessage.Move)
+            {
+                if (mathUtil.getDistance(Cursor.Position, new Point(this.Location.X + this.Width / 2, this.Location.Y + this.Height / 2)) <= CLOCK_RADIUS)
+                {
+                    if (args >= 6)
+                    {
+                        this.Opacity = mathUtil.getDistance(Cursor.Position, new Point(this.Location.X + this.Width / 2, this.Location.Y + this.Height / 2)) / 100f + 0.1f;
+                    }
+                }
+                else
+
+                {
+                    if (args >= 6)
+                    {
+                        this.Opacity = 1;
+                    }
+                }
+            }
+        }
+
     }
 }

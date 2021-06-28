@@ -31,12 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button18 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
@@ -44,6 +43,7 @@
             this.button12 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -64,8 +64,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Controls.Add(this.button5);
+            this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button2);
@@ -79,19 +79,6 @@
             this.groupBox1.Text = "ウィンドウ編";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.DarkOrange;
-            this.button7.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button7.Location = new System.Drawing.Point(6, 30);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(289, 52);
-            this.button7.TabIndex = 8;
-            this.button7.Text = "カイルくん";
-            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.SkyBlue;
@@ -100,23 +87,10 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(299, 52);
             this.button6.TabIndex = 5;
-            this.button6.Text = "10.UpdateLayedWindowをつかう";
+            this.button6.Text = "10.Win32APIをつかう";
             this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.SkyBlue;
-            this.button5.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button5.Location = new System.Drawing.Point(6, 262);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(299, 52);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "9.ウィンドウを半透明に";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button1_Click);
             // 
             // button4
             // 
@@ -156,6 +130,19 @@
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.DarkOrange;
+            this.button7.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button7.Location = new System.Drawing.Point(6, 30);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(289, 52);
+            this.button7.TabIndex = 8;
+            this.button7.Text = "カイルくん";
+            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // groupBox2
             // 
@@ -239,6 +226,19 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "応用編";
             // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.SkyBlue;
+            this.button5.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button5.Location = new System.Drawing.Point(6, 262);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(299, 52);
+            this.button5.TabIndex = 6;
+            this.button5.Text = "9.クリックを透過する";
+            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -263,7 +263,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
@@ -275,6 +274,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button button5;
     }
 }
 
